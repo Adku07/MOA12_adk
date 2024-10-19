@@ -98,6 +98,11 @@ button{
   transition: transform 0.2s ease;
 }
 
+.filter-btn.active {
+  background-color: gold; 
+  color: white;
+  border: none;
+}
 
 @media (max-width: 768px) {
     .profile-foto{

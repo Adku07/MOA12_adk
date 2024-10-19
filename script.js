@@ -45,9 +45,8 @@ const movies = [
 
 const movieList = document.getElementById('isi-film');
 
-// Fungsi untuk menampilkan film
 function displayFilms(moviesToDisplay) {
-  movieList.innerHTML = ''; // Bersihkan daftar film sebelumnya
+  movieList.innerHTML = ''; 
   moviesToDisplay.forEach(movie => {
     const card = document.createElement('div');
     card.className = 'col-12 col-sm-6 col-md-4 mb-4';
@@ -67,7 +66,7 @@ function displayFilms(moviesToDisplay) {
   });
 }
 
-// Tampilkan semua film pada awal
+
 displayFilms(movies);
 
 function openBookingModal(movieTitle) {
@@ -90,7 +89,6 @@ function bookTicket() {
   document.getElementById('seats').value = '';
 }
 
-// Smooth scroll untuk kembali ke atas
 document.querySelector(".href-cpy").addEventListener("click", function(e) {
   e.preventDefault();
   window.scrollTo({
@@ -99,9 +97,20 @@ document.querySelector(".href-cpy").addEventListener("click", function(e) {
   });
 });
 
-// Event listener untuk tombol filter
 document.querySelectorAll('.filter-btn').forEach(button => {
   button.addEventListener('click', function() {
+    const category = this.getAttribute('data-category');
+    const filteredMovies = category === 'All' ? movies : movies.filter(movie => movie.category === category);
+    displayFilms(filteredMovies); 
+  });
+});
+
+document.querySelectorAll('.filter-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    
+    this.classList.add('active');
+
     const category = this.getAttribute('data-category');
     const filteredMovies = category === 'All' ? movies : movies.filter(movie => movie.category === category);
     displayFilms(filteredMovies); 
