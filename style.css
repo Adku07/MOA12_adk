@@ -93,6 +93,12 @@ button{
   color: gold;
 }
 
+.btn-primary:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+
 @media (max-width: 768px) {
     .profile-foto{
       display: none;
